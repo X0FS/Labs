@@ -122,7 +122,6 @@ class List {
                 }
             }
         }
-        //System.out.print(tail.data);
     }
 
     void Sort() {
