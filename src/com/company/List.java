@@ -65,7 +65,7 @@ class List {
             ListElement el = head;
             if ( id == -1 ){
                 while(el != null){
-                    if (el.data == data){
+                    if (el.data.equals(data)){
                         return el;
                     }
                     el = el.next;
@@ -104,10 +104,11 @@ class List {
             JOptionPane.showMessageDialog(null, "id = " + l.id + ", data = " + l.data);
         } else {
             l = search(-1, data);
-            if (l == null){
-                JOptionPane.showMessageDialog(null, "В списке нет такого значения");
-            }else{
+            if (l != null){
                 JOptionPane.showMessageDialog(null, "id = " + l.id + ", data = " + l.data);
+
+            }else{
+                JOptionPane.showMessageDialog(null, "В списке нет такого значения");
             }
         }
     }
