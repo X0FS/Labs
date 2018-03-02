@@ -43,10 +43,10 @@ public class ShowWindow extends Window {
         public void actionPerformed ( ActionEvent e ) {
             if ( e.getSource( ).equals( ButData ) ) {
                 try{
-                    if ((IDt.getText().trim().length() > 0) && (Integer.parseInt(IDt.getText().trim()) > -1) && (Integer.parseInt(IDt.getText().trim()) <= TheList.gettailid())){
+                    if ((IDt.getText().trim().length() > 0) && (Integer.parseInt(IDt.getText().trim()) > -1) && (Integer.parseInt(IDt.getText().trim()) <= TheList.GetTailId())){
                        TheList.printList(Integer.parseInt(IDt.getText().trim()), -1);
                     }else if (Datat.getText().trim().length() <= 0){
-                        JOptionPane.showMessageDialog(null, "ID не может быть меньше 0 или больше " + TheList.gettailid());
+                        JOptionPane.showMessageDialog(null, "ID не может быть меньше 0 или больше " + TheList.GetTailId());
                     }else{
                         TheList.printList(-1, Integer.parseInt(Datat.getText().trim()));
                     }

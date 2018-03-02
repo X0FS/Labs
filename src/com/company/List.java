@@ -8,9 +8,9 @@ class List {
         ListElement next;
         int data;
         int id;
-        protected void finalize() throws Throwable{
-            System.out.print("Я умер");
-        }
+        //protected void finalize() throws Throwable{
+        //    System.out.print("Я умер");
+        //}
     }
 
     private ListElement head;
@@ -34,6 +34,15 @@ class List {
                 checkel.data = data;
             }
         }
+    }
+    void addWithID(int id, ListElement obj){
+        ListElement a = new ListElement();
+        a = obj;
+        a.id = id;
+        if (id == 0){
+            head = a;
+        }
+        a.next = search(id+1, -1);
     }
 
     private ListElement search(int id, int data){
@@ -103,7 +112,7 @@ class List {
             if (id != 0) {
                 li = search(id - 1, -1);
                 if (id == tail.id) {
-                    tail = search(gettailid() - 1, -1);
+                    tail = search(GetTailId() - 1, -1);
                 }
                 li.next = li.next.next;
                 li = search(id + 1, -1);
@@ -123,23 +132,30 @@ class List {
         System.out.print(tail.data);
     }
 
-    /*void sort(){
+    void Sort() {
+
         ListElement li, ji;
-        int i, j;
-        boolean t = true;
-        while (t) {
-            t = false;
-            for (j = 0; j < n -i - 2;) {
-                if ((li = search(-1, j)) > (ji = search(-1, j+1)))
-                swap(a[j], a[j + 1])
-                t = true;
-                i = i + 1;
+        //boolean z = true;
+
+        for (int i = 100; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                li = search(j, -1);
+                ji = search(j+1, -1);
+                if (li.data > ji.data) {
+                    //ListElement ji = li;
+                    //li.data = li.next.data;
+                    //li.next.data = ji.data;
+                    //addWithID(j, li.data);
+                //    int t = arr[j];
+                //    arr[j] = arr[j + 1];
+                //    arr[j + 1] = t;
+                }
             }
         }
-    }*/
+    }
 
 
-    int gettailid( ){
+    int GetTailId( ){
         return tail.id;
     }
 

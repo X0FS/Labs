@@ -47,10 +47,10 @@ public class AddWindow extends Window{
                         if (Integer.parseInt(IDt.getText().trim()) == 0){
                             TheList.addWithID(Integer.parseInt(IDt.getText().trim()), Integer.parseInt(Datat.getText().trim()));
                         } else {
-                            if ((TheList.gettailid() >= Integer.parseInt(IDt.getText().trim())) && (Integer.parseInt(IDt.getText().trim()) > -1)) {
+                            if ((TheList.GetTailId() >= Integer.parseInt(IDt.getText().trim())) && (Integer.parseInt(IDt.getText().trim()) > -1)) {
                                 TheList.addWithID(Integer.parseInt(IDt.getText().trim()), Integer.parseInt(Datat.getText().trim()));
                             } else {
-                                JOptionPane.showMessageDialog(null, "ID не может быть меньше 0 или больше " + TheList.gettailid());
+                                JOptionPane.showMessageDialog(null, "ID не может быть меньше 0 или больше " + TheList.GetTailId());
                             }
                         }
                     }

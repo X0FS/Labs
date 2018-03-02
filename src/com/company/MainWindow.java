@@ -67,7 +67,7 @@ public class MainWindow extends Window {
 
             }
             if ( e.getSource( ).equals( Sort ) ){
-
+                TheList.Sort();
                 JOptionPane.showMessageDialog( null,"Отсортировали");
 
             }
