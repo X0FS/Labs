@@ -41,18 +41,14 @@ public class AddWindow extends Window{
         public void actionPerformed ( ActionEvent e ) {
             if ( e.getSource( ).equals( ButData ) )  {
                 try {
-                    if (IDt.getText().trim().length() == 0) {
-                        TheList.addWithID(-1, Integer.parseInt(Datat.getText().trim()));
-                    } else {
-                        if (Integer.parseInt(IDt.getText().trim()) == 0){
+                    if (IDt.getText().trim().length() != 0){
+                        if (TheList.IdIsValid(IDt.getText())){
                             TheList.addWithID(Integer.parseInt(IDt.getText().trim()), Integer.parseInt(Datat.getText().trim()));
-                        } else {
-                            if ((TheList.GetTailId() >= Integer.parseInt(IDt.getText().trim())) && (Integer.parseInt(IDt.getText().trim()) > -1)) {
-                                TheList.addWithID(Integer.parseInt(IDt.getText().trim()), Integer.parseInt(Datat.getText().trim()));
-                            } else {
-                                JOptionPane.showMessageDialog(null, "ID не может быть меньше 0 или больше " + TheList.GetTailId());
-                            }
+                        }else {
+                            throw new Exception();
                         }
+                    } else {
+                        TheList.addWithID(-1, Integer.parseInt(Datat.getText().trim()));
                     }
                 }catch (Exception error){JOptionPane.showMessageDialog(null, "У вас ошибка, возможно, вы ввели некорректные значения " + error);
 

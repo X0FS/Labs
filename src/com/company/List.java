@@ -64,7 +64,7 @@ class List {
         ListElement l;
         if (id == -2){
             ListElement le = head;
-            int[] out = new int[GetTailId()+1];
+            int[] out = new int[GetTailId() + 1];
             int i = 0;
             while (le != null) {
                 out[i] = le.data;

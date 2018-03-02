@@ -54,7 +54,7 @@ public class ShowWindow extends Window {
                 }
             }
             if ( e.getSource( ).equals( AllData ) ) {
-                TheList.printList(-2, 0     );
+                TheList.printList(-2, 0 );
             }
         }
     }

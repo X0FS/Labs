@@ -34,7 +34,11 @@ public class RemoveWindow extends Window {
         @Override
         public void actionPerformed ( ActionEvent e ) {
             if ( e.getSource( ).equals( ButData ) ) {
-                TheList.DeleteElem(Integer.parseInt(IDt.getText().trim()));
+                try {
+                    TheList.DeleteElem(Integer.parseInt(IDt.getText().trim()));
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, "Введите валидный id");
+                }
             }
         }
     }

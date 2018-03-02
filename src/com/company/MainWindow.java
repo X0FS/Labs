@@ -60,8 +60,8 @@ public class MainWindow extends Window {
             }
             if ( e.getSource( ).equals( Filler ) ){
                 Random rnd = new Random(System.currentTimeMillis());
-                for (int i = 0; i <101; i++){
-                    TheList.addWithID(-1, rnd.nextInt(1000));
+                for (int i = 0; i <10; i++){
+                    TheList.addWithID(-1, rnd.nextInt(100));
                 }
                 JOptionPane.showMessageDialog( null,"Наполнили");
 
