@@ -35,7 +35,7 @@ class List {
             }
         }
     }
-    void addWithID(int id, ListElement obj){
+    /*oid addWithID(int id, ListElement obj){
         ListElement a;
         a = obj;
         //a.id = id;
@@ -43,7 +43,7 @@ class List {
             head = a;
         }
         a.next = search(id+1, -1);
-    }
+    }*/
 
     private ListElement search(int id, int data){
         if (head == null){
@@ -141,10 +141,11 @@ class List {
             for (int j = 0; j < i; j++) {
                 li = search(j, -1);
                 ji = search(j+1, -1);
-                //if (li.data > ji.data) {
-                    addWithID(j+1, li);
-                    addWithID(j, ji);
-                //}
+                if (li.data > ji.data) {
+                    int k = li.data;
+                    li.data = ji.data;
+                    ji.data = k;
+                }
             }
         }
     }
