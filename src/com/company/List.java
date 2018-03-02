@@ -59,28 +59,48 @@ class List {
 
 
     private ListElement search(int id, String data){
-        if (head == null){
-            return null;
-        } else {
-            ListElement el = head;
-            if ( id == -1 ){
-                while(el != null){
-                    if (el.data == data){
-                        return el;
-                    }
-                    el = el.next;
-                }
+            if (head == null) {
                 return null;
             } else {
-                while ( el != null ){
-                    if (el.id == id){
-                        return el;
+                if(isSort && id == -1){
+                    //написать для быстрого поиска по ключу
+                }
+                if(!isSort) {      //поиск по ключу для несортированного
+                    ListElement el = head;
+                    if (id == -1) {
+                        while (el != null) {
+                            if (el.data.equals(data)) {
+                                return el;
+                            }
+                            el = el.next;
+                        }
+                        return null;
                     }
-                    el = el.next;
+                }
+                double division = (GetTailId() + 1) / (id + 1);
+                if (!isSort || division > 2) {    //поиск по ID для несортированного или для ID, оказавшегося в первой половине отсортированного
+                    ListElement el = head;
+                    while (el != null) {
+                        if (el.id == id) {
+                            return el;
+                        }
+                        el = el.next;
+                    }
+                }
+                else {          //ну и поиск по ID для второй половины отсортированного
+                    ListElement el = head;
+                    for(int i = GetTailId() / 2; i > 0; i--){
+                       el = el.next;
+                    }
+                    while (el != null) {
+                        if (el.id == id) {
+                            return el;
+                        }
+                        el = el.next;
+                    }
                 }
             }
-        }
-        return null;
+            return null;
     }
 
     void printList(int id, String data){
@@ -104,11 +124,10 @@ class List {
             JOptionPane.showMessageDialog(null, "id = " + l.id + ", data = " + l.data);
         } else {
             l = search(-1, data);
-            if (l != null){
-                JOptionPane.showMessageDialog(null, "id = " + l.id + ", data = " + l.data);
-
-            }else{
+            if (l == null){
                 JOptionPane.showMessageDialog(null, "В списке нет такого значения");
+            }else{
+                JOptionPane.showMessageDialog(null, "id = " + l.id + ", data = " + l.data);
             }
         }
     }
