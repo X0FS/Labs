@@ -7,14 +7,14 @@ class List {
 
     class ListElement {
         ListElement next;
-        int data;
+        String data;
         int id;
     }
 
     private ListElement head;
     private ListElement tail;
 
-    void addWithID(int id, int data){
+    void addWithID(int id, String data){
         ListElement a = new ListElement();
         a.data = data;
         if (tail == null){
@@ -27,7 +27,7 @@ class List {
             tail.next = a;
             tail = a;
         } else if (id > -1){
-            ListElement checkel = search(id, -1);
+            ListElement checkel = search(id, null);
             if (checkel != null){
                 checkel.data = data;
             }
@@ -35,7 +35,7 @@ class List {
     }
 
 
-    private ListElement search(int id, int data){
+    private ListElement search(int id, String data){
         if (head == null){
             return null;
         } else {
@@ -60,11 +60,11 @@ class List {
         return null;
     }
 
-    void printList(int id, int data){
+    void printList(int id, String data){
         ListElement l;
         if (id == -2){
             ListElement le = head;
-            int[] out = new int[GetTailId() + 1];
+            String[] out = new String[GetTailId() + 1];
             int i = 0;
             while (le != null) {
                 out[i] = le.data;
@@ -75,7 +75,7 @@ class List {
             return;
         }
         if (  id != -1 ){
-            l = search(id, -1);
+            l = search(id, null);
             JOptionPane.showMessageDialog(null, "id = " + l.id + ", data = " + l.data);
         } else {
             l = search(-1, data);
@@ -113,19 +113,19 @@ class List {
             return;
         }else {
             if (id != 0) {
-                li = search(id - 1, -1);
+                li = search(id - 1, null);
                 if (id == tail.id) {
-                    tail = search(GetTailId() - 1, -1);
+                    tail = search(GetTailId() - 1, null);
                 }
                 li.next = li.next.next;
-                li = search(id + 1, -1);
+                li = search(id + 1, null);
                 while (li != null) {
                     li.id = li.id - 1;
                     li = li.next;
                 }
             } else {
                 head = head.next;
-                li = search(id + 1, -1);
+                li = search(id + 1, null);
                 while (li != null) {
                     li.id = li.id - 1;
                     li = li.next;
@@ -140,10 +140,10 @@ class List {
 
         for (int i = GetTailId(); i > 0; i--) {
             for (int j = 0; j < i; j++) {
-                li = search(j, -1);
-                ji = search(j+1, -1);
-                if (li.data > ji.data) {
-                    int k = li.data;
+                li = search(j, null);
+                ji = search(j+1, null);
+                if (li.data.length() > ji.data.length()) {
+                    String k = li.data;
                     li.data = ji.data;
                     ji.data = k;
                 }
