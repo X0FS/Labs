@@ -8,9 +8,6 @@ class List {
         ListElement next;
         int data;
         int id;
-        //protected void finalize() throws Throwable{
-        //    System.out.print("Я умер");
-        //}
     }
 
     private ListElement head;
@@ -35,15 +32,7 @@ class List {
             }
         }
     }
-    /*oid addWithID(int id, ListElement obj){
-        ListElement a;
-        a = obj;
-        //a.id = id;
-        if (id == 0){
-            head = a;
-        }
-        a.next = search(id+1, -1);
-    }*/
+
 
     private ListElement search(int id, int data){
         if (head == null){
@@ -145,7 +134,6 @@ class List {
                     int k = li.data;
                     li.data = ji.data;
                     ji.data = k;
-
                 }
             }
         }
