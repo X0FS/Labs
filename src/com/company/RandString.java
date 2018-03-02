@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandString {
 
-    private static final String CHAR_LIST = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    private static final String CHAR_LIST = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final Random rnd = new Random();
 
     public static String GenerateRandomString(){
