@@ -57,9 +57,15 @@ class List {  //implements Comparable{
                 if (!isSort) {
                     checkel.data = data;
                 } else {
-                    checkel = search(id - 1, null);
-                    a.next = checkel.next;
-                    checkel.next = a;
+                    if (id != 0) {
+                        checkel = search(id - 1, null);
+                        a.next = checkel.next;
+                        checkel.next = a;
+                    }
+                    else {
+                        a.next = head.next;
+                        head = a;
+                    }
                     a.id = id;
                     tail.id++;
                     RepairID(a);
@@ -79,7 +85,7 @@ class List {  //implements Comparable{
             li = li.next;
         }
     }
-   private ListElement search(int id, String data){
+   /*private ListElement search(int id, String data){
         if (head == null){
             return null;
         } else {
@@ -103,13 +109,32 @@ class List {  //implements Comparable{
         }
         return null;
     }
-
-  /*  private ListElement search(int id, String data){
+    */
+    private ListElement search(int id, String data){
             if (head == null) {
                 return null;
             } else {
-                if(isSort && id == -1){
+                if(( isSort ) && ( id == -1 )){
                     //написать для быстрого поиска по ключу
+                    ListElement el = search(GetTailId() / 2, null);
+                    if(data.compareTo(el.data) <= 0) {
+                        ListElement elem = head;
+                        while (elem != el) {
+                            if (elem.data.equals(data)) {
+                                return elem;
+                            }
+                            elem = elem.next;
+                        }
+                        return null;
+                    } else {
+                        while (el != null) {
+                            if (el.data.equals(data)) {
+                                return el;
+                            }
+                            el = el.next;
+                        }
+                    }
+                    return null;
                 }
                 if(!isSort) {      //поиск по ключу для несортированного
                     ListElement el = head;
@@ -123,8 +148,13 @@ class List {  //implements Comparable{
                         return null;
                     }
                 }
-                double division = (GetTailId() + 1) / (id + 1);
-                if (!isSort || division > 2) {    //поиск по ID для несортированного или для ID, оказавшегося в первой половине отсортированного
+                double division;
+                if (id == 0){
+                    division = 5.0;
+                } else {
+                    division = (double) GetTailId() / id;
+                }
+                if (!isSort || division > 2.0) {    //поиск по ID для несортированного или для ID, оказавшегося в первой половине отсортированного
                     ListElement el = head;
                     while (el != null) {
                         if (el.id == id) {
@@ -132,10 +162,11 @@ class List {  //implements Comparable{
                         }
                         el = el.next;
                     }
+                    return null;
                 }
                 else {          //ну и поиск по ID для второй половины отсортированного
                     ListElement el = head;
-                    for(int i = GetTailId() / 2; i > 0; i--){
+                    for(int i = GetTailId() / 2 + 1; i > 0; i--){
                        el = el.next;
                     }
                     while (el != null) {
@@ -147,7 +178,7 @@ class List {  //implements Comparable{
                 }
             }
             return null;
-    }*/
+    }
 
     void printList(int id, String data){
         ListElement l;
@@ -229,19 +260,22 @@ class List {  //implements Comparable{
     void Sort() {
 
         ListElement li, ji;
-
-        for (int i = GetTailId(); i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                li = search(j, null);
-                ji = search(j+1, null);
-                if(li.data.compareTo(ji.data) > 0){
-                    String k = li.data;
-                    li.data = ji.data;
-                    ji.data = k;
+        try {
+            for (int i = GetTailId(); i > 0; i--) {
+                for (int j = 0; j < i; j++) {
+                    li = search(j, null);
+                    ji = search(j + 1, null);
+                    if (li.data.compareTo(ji.data) > 0) {
+                        String k = li.data;
+                        li.data = ji.data;
+                        ji.data = k;
+                    }
                 }
             }
+            isSort = true;
+        } catch (Exception h){
+
         }
-        isSort = true;
     }
 
 
