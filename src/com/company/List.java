@@ -29,7 +29,7 @@ class List {
         } else if (id > -1){
             ListElement checkel = search(id, null);
             if (checkel != null) {
-                if (isSort) {
+                if (!isSort) {
                     checkel.data = data;
                     isSort = false;
                 } else {
