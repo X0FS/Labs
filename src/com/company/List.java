@@ -89,7 +89,7 @@ class List {
 
     boolean IdIsValid(String rawId){
         if (rawId.trim().length() > 0){
-            int id = Integer.parseInt(rawId);
+            int id = Integer.parseInt(rawId.trim());
             if ((id > -1) && (id <= GetTailId())){
                 return true;
             }
