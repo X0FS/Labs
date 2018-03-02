@@ -68,12 +68,10 @@ class List {
             int i = 0;
             while (le != null) {
                 out[i] = le.data;
-                //System.out.print(le.data + "(" + le.id + ")" + " ");
                 le = le.next;
                 i += 1;
             }
             JOptionPane.showMessageDialog(null, Arrays.toString(out));
-            //System.out.print("\n");
             return;
         }
         if (  id != -1 ){
