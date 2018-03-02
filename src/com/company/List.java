@@ -65,7 +65,7 @@ class List {
             ListElement el = head;
             if ( id == -1 ){
                 while(el != null){
-                    if (el.data.equals(data)){
+                    if (el.data == data){
                         return el;
                     }
                     el = el.next;
