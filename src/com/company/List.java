@@ -87,6 +87,16 @@ class List {
         }
     }
 
+    boolean IdIsValid(String rawId){
+        if (rawId.trim().length() > 0){
+            int id = Integer.parseInt(rawId);
+            if ((id > -1) && (id <= GetTailId())){
+                return true;
+            }
+        }
+        return false;
+    }
+
     void DeleteElem(int id){
         ListElement li;
         if (head == null){
