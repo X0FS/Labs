@@ -1,6 +1,7 @@
 package com.company;
 
 import javax.swing.*;
+import java.util.Arrays;
 
 class List {
 
@@ -63,11 +64,16 @@ class List {
         ListElement l;
         if (id == -2){
             ListElement le = head;
+            int[] out = new int[GetTailId()+1];
+            int i = 0;
             while (le != null) {
-                System.out.print(le.data + "(" + le.id + ")" + " ");
+                out[i] = le.data;
+                //System.out.print(le.data + "(" + le.id + ")" + " ");
                 le = le.next;
+                i += 1;
             }
-            System.out.print("\n");
+            JOptionPane.showMessageDialog(null, Arrays.toString(out));
+            //System.out.print("\n");
             return;
         }
         if (  id != -1 ){
@@ -118,15 +124,14 @@ class List {
                 }
             }
         }
-        System.out.print(tail.data);
+        //System.out.print(tail.data);
     }
 
     void Sort() {
 
         ListElement li, ji;
-        //boolean z = true;
 
-        for (int i = 100; i > 0; i--) {
+        for (int i = GetTailId(); i > 0; i--) {
             for (int j = 0; j < i; j++) {
                 li = search(j, -1);
                 ji = search(j+1, -1);
