@@ -10,7 +10,7 @@ class List {
         String data;
         int id;
     }
-
+    private boolean isSort = false;
     private ListElement head;
     private ListElement tail;
 
@@ -28,10 +28,20 @@ class List {
             tail = a;
         } else if (id > -1){
             ListElement checkel = search(id, null);
-            if (checkel != null){
-                checkel.data = data;
+            if (checkel != null) {
+                if (isSort) {
+                    checkel.data = data;
+                    isSort = false;
+                } else {
+                    checkel = search(id - 1, null);
+                    a.next = checkel.next;
+                    checkel.next = a;
+                    RepairID(id - 1);
+                    Sort();
+                }
             }
         }
+
     }
 
 
@@ -97,6 +107,14 @@ class List {
         return false;
     }
 
+    void RepairID(int id){
+        ListElement li = search(id, null);
+        for(int i = id; i <= GetTailId() + 1; i++) {
+            li.id = i;
+            li = li.next;
+        }
+    }
+
     void DeleteElem(int id){
         ListElement li;
         if (head == null){
@@ -149,6 +167,7 @@ class List {
                 }
             }
         }
+        isSort = true;
     }
 
 

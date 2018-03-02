@@ -19,9 +19,9 @@ public class ShowWindow extends Window {
         setLayout( new GridLayout(3,2 ) );
 
         ID      = new JLabel( "Поиск по ID" );
-        IDt     = new JTextField( "" );
+        IDt     = new JTextField( " " );
         Data    = new JLabel( "Поиск по ключу?" );
-        Datat   = new JTextField( "" );
+        Datat   = new JTextField( " " );
         ButData = new JButton( "Просмотр" );
         AllData = new JButton( "Просмотр всех записей" );
 
