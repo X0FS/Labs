@@ -3,7 +3,32 @@ package com.company;
 import javax.swing.*;
 import java.util.Arrays;
 
-class List {
+class List {  //implements Comparable{
+/*
+    String str;
+    int number;
+
+    List(String str, int number) {
+        this.str = str;
+        this.number = number;
+    }
+
+    @Override
+    public int compareTo(Object obj) {
+        List entry = (List) obj;
+
+        int result = str.compareTo(entry.str);
+        if(result != 0) {
+            return result;
+        }
+
+        result = number - entry.number;
+        if(result != 0) {
+            return (int) result / Math.abs( result );
+        }
+        return 0;
+    }
+*/
 
     class ListElement {
         ListElement next;
@@ -54,9 +79,32 @@ class List {
             li = li.next;
         }
     }
+   private ListElement search(int id, String data){
+        if (head == null){
+            return null;
+        } else {
+            ListElement el = head;
+            if ( id == -1 ){
+                while(el != null){
+                    if (el.data.equals(data)){
+                        return el;
+                    }
+                    el = el.next;
+                }
+                return null;
+            } else {
+                while ( el != null ){
+                    if (el.id == id){
+                        return el;
+                    }
+                    el = el.next;
+                }
+            }
+        }
+        return null;
+    }
 
-
-    private ListElement search(int id, String data){
+  /*  private ListElement search(int id, String data){
             if (head == null) {
                 return null;
             } else {
@@ -99,7 +147,7 @@ class List {
                 }
             }
             return null;
-    }
+    }*/
 
     void printList(int id, String data){
         ListElement l;
@@ -186,13 +234,11 @@ class List {
             for (int j = 0; j < i; j++) {
                 li = search(j, null);
                 ji = search(j+1, null);
-                //if () {
-                    if (li.data.length() > ji.data.length()) {
-                        String k = li.data;
-                        li.data = ji.data;
-                        ji.data = k;
-                    }
-                //}
+                if(li.data.compareTo(ji.data) > 0){
+                    String k = li.data;
+                    li.data = ji.data;
+                    ji.data = k;
+                }
             }
         }
         isSort = true;
