@@ -59,9 +59,9 @@ public class MainWindow extends Window {
                 p.pack( );
             }
             if ( e.getSource( ).equals( Filler ) ){
-                Random rnd = new Random(System.currentTimeMillis());
                 for (int i = 0; i <10; i++){
-                    //TheList.addWithID(-1, rnd.;
+                    TheList.addWithID( -1, RandString.GenerateRandomString());
+                    //TheList.addWithID(-1, rnd.nextInt(100));
                 }
                 JOptionPane.showMessageDialog( null,"Наполнили");
 
