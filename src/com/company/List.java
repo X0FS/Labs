@@ -31,17 +31,30 @@ class List {
             if (checkel != null) {
                 if (!isSort) {
                     checkel.data = data;
-                    isSort = false;
                 } else {
+                    //ListElement jiest = search(GetTailId(), null);
                     checkel = search(id - 1, null);
                     a.next = checkel.next;
                     checkel.next = a;
-                    RepairID(id - 1);
+                    a.id = id;
+                    tail.id++;
+                    //JOptionPane.showMessageDialog(null, tail.data + " " + tail.id);
+                    RepairID(a);
                     Sort();
+
                 }
             }
         }
 
+    }
+
+    void RepairID(ListElement li){
+        int i;
+
+        for(i = li.id; i < GetTailId() + 1; i++) {
+            li.id = i;
+            li = li.next;
+        }
     }
 
 
@@ -77,10 +90,12 @@ class List {
             String[] out = new String[GetTailId() + 1];
             int i = 0;
             while (le != null) {
+                //System.out.print(le.data + "(" + le.id + ")" + ", ");
                 out[i] = le.data + "(" + le.id + ")";
                 le = le.next;
                 i += 1;
             }
+            System.out.println("");
             JOptionPane.showMessageDialog(null, Arrays.toString(out));
             return;
         }
@@ -107,13 +122,7 @@ class List {
         return false;
     }
 
-    void RepairID(int id){
-        ListElement li = search(id, null);
-        for(int i = id; i <= GetTailId() + 1; i++) {
-            li.id = i;
-            li = li.next;
-        }
-    }
+
 
     void DeleteElem(int id){
         ListElement li;
@@ -173,6 +182,7 @@ class List {
 
     int GetTailId( ){
         return tail.id;
+        //return isSort == false ? tail.id : tail.id + 1;
     }
 
 }
