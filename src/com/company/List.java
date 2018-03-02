@@ -77,7 +77,7 @@ class List {
             String[] out = new String[GetTailId() + 1];
             int i = 0;
             while (le != null) {
-                out[i] = le.data;
+                out[i] = le.data + "(" + le.id + ")";
                 le = le.next;
                 i += 1;
             }
