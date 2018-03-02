@@ -36,9 +36,9 @@ class List {
         }
     }
     void addWithID(int id, ListElement obj){
-        ListElement a = new ListElement();
+        ListElement a;
         a = obj;
-        a.id = id;
+        //a.id = id;
         if (id == 0){
             head = a;
         }
@@ -141,15 +141,10 @@ class List {
             for (int j = 0; j < i; j++) {
                 li = search(j, -1);
                 ji = search(j+1, -1);
-                if (li.data > ji.data) {
-                    //ListElement ji = li;
-                    //li.data = li.next.data;
-                    //li.next.data = ji.data;
-                    //addWithID(j, li.data);
-                //    int t = arr[j];
-                //    arr[j] = arr[j + 1];
-                //    arr[j + 1] = t;
-                }
+                //if (li.data > ji.data) {
+                    addWithID(j+1, li);
+                    addWithID(j, ji);
+                //}
             }
         }
     }
