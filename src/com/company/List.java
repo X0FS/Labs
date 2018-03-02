@@ -145,6 +145,7 @@ class List {
                     int k = li.data;
                     li.data = ji.data;
                     ji.data = k;
+
                 }
             }
         }
