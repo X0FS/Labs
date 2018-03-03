@@ -43,12 +43,12 @@ public class AddWindow extends Window{
                 try {
                     if (IDt.getText().trim().length() != 0){
                         if (TheList.IdIsValid(IDt.getText())){
-                            TheList.addWithID(Integer.parseInt(IDt.getText().trim()), Integer.parseInt(Datat.getText().trim()));
+                            TheList.addWithID(Integer.parseInt(IDt.getText().trim()), Datat.getText().trim());
                         }else {
                             throw new Exception();
                         }
                     } else {
-                        TheList.addWithID(-1, Integer.parseInt(Datat.getText().trim()));
+                        TheList.addWithID(-1, Datat.getText().trim());
                     }
                 }catch (Exception error){JOptionPane.showMessageDialog(null, "У вас ошибка, возможно, вы ввели некорректные значения " + error);
 

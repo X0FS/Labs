@@ -19,9 +19,9 @@ public class ShowWindow extends Window {
         setLayout( new GridLayout(3,2 ) );
 
         ID      = new JLabel( "Поиск по ID" );
-        IDt     = new JTextField( "" );
+        IDt     = new JTextField( " " );
         Data    = new JLabel( "Поиск по ключу?" );
-        Datat   = new JTextField( "" );
+        Datat   = new JTextField( " " );
         ButData = new JButton( "Просмотр" );
         AllData = new JButton( "Просмотр всех записей" );
 
@@ -44,9 +44,9 @@ public class ShowWindow extends Window {
             if ( e.getSource( ).equals( ButData ) ) {
                try{
                     if (TheList.IdIsValid(IDt.getText())) {
-                        TheList.printList(Integer.parseInt(IDt.getText().trim()), -1);
+                        TheList.printList(Integer.parseInt(IDt.getText().trim()), null);
                     }else{
-                        TheList.printList(-1, Integer.parseInt(Datat.getText().trim()));
+                        TheList.printList(-1, Datat.getText().trim());
                     }
 
                 }catch (Exception error){
@@ -54,7 +54,7 @@ public class ShowWindow extends Window {
                 }
             }
             if ( e.getSource( ).equals( AllData ) ) {
-                TheList.printList(-2, 0 );
+                TheList.printList(-2, null );
             }
         }
     }
